@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the number!</title>
+
+
+    <style>
+        body {
+            background-color: rgb(248, 184, 184);
+        }
+
+        .letter {
+            align-self: center;
+            margin: 4%;
+        }
+
+        button {
+            padding: 10px;
+            color: rgb(65, 20, 77);
+            border: 1px solid rgb(95, 72, 95);
+            border-radius: 4px;
+            background-color: rgb(197, 136, 209);
+            box-shadow: 0 1px 5px rgb(173, 113, 123);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            background-color: rgb(250, 214, 220);
+            color: rgb(194, 65, 108);
+            border: 2px solid rgb(126, 54, 126);
+            margin: 5%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="letter">
+        <img src="closed enve.PNG" alt="" srcset="">
+
+    </div>
+
+    <div class ="nummer">
+        <input type="text" placeholder="Ditt svar" id="inputID">
+    </div>
+
+    <div class="button">
+
+        <button style=font-family:Verdana id="knappID"> Gjett! </button>
+    </div>
+
+    <h3 style=font-family:verdana id="forsøk">Forsøk:</h3>
+
+
+    <script>
+        var knapp = document.querySelector("#knappID");
+        var input = document.querySelector("#inputID")
+ 
+        function sjekkTall(){
+        console.log(input.value)
+        }
+ 
+        knapp.addEventListener("click", sjekkTall);
+
+    </script>
+</body>
+</html>
