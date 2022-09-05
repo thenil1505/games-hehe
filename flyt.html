@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess the number!</title>
 
 
@@ -23,8 +25,6 @@
             background-color: rgb(197, 136, 209);
             box-shadow: 0 1px 5px rgb(173, 113, 123);
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
         }
 
         input[type="text"] {
@@ -32,23 +32,16 @@
             color: rgb(194, 65, 108);
             border: 2px solid rgb(126, 54, 126);
             margin: 5%;
-            display: flex;
-            flex-direction: column;
         }
     </style>
 </head>
 <body>
     <div class="letter">
         <img src="closed enve.PNG" alt="" srcset="">
-
     </div>
 
-    <div class ="nummer">
+    <div class ="guess_box">
         <input type="text" placeholder="Ditt svar" id="inputID">
-    </div>
-
-    <div class="button">
-
         <button style=font-family:Verdana id="knappID"> Gjett! </button>
     </div>
 
