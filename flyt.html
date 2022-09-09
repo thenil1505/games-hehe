@@ -9,13 +9,42 @@
 
     <style>
         body {
-            background-color: rgb(248, 184, 184);
+            background-image: linear-gradient(#E3C4F8, #f0c2d9,#FFF0F4);
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            color: white;
+        }
+
+        @keyframes gradient {
+            0% {
+        background-position: 0% 50%;;
+            }
+            50% {
+        background-position: 100% 50%;
+            }
+            100% {
+        background-position: 0% 50%;
+            }
+        }
+
+        .innpakning{
+            background-color: rgb(250, 198, 222);
+            border: #FFF0F4;
+            border-style: solid;
+            display: block;
+            margin: auto;
+            width: 75%;
+            height: 600px;
+            text-align: center;
             align-items: center;
         }
 
         .letter {
-            align-self: center;
-            margin: 4%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            text-align: center;
         }
 
         button {
@@ -26,17 +55,28 @@
             background-color: rgb(197, 136, 209);
             box-shadow: 0 1px 5px rgb(173, 113, 123);
             cursor: pointer;
+            display: block;
+            margin: auto;
+            margin-top: 2%;
+
         }
 
         input[type="text"] {
             background-color: rgb(250, 214, 220);
             color: rgb(194, 65, 108);
             border: 2px solid rgb(126, 54, 126);
-            margin: 5%;
+            display: block;
+            margin: auto;
+            margin-top: 10%;
         }
+
+
     </style>
 </head>
 <body>
+    <h3 style=font-family:verdana id="attempts"> &#9825; Attempts:</h3>
+
+    <div class = "innpakning">
     <div class="letter">
         <img src="closed enve.PNG" alt="" srcset="">
         <h2> A number between 0-50!</h2>
@@ -46,14 +86,18 @@
         <input type="text" placeholder="Type number here" id="inputID">
         <button style=font-family:Verdana id="knappID"> &#10024; </button>
     </div>
+        <h2 id="feedback"></h2>
+    </div>
 
-    <h3 style=font-family:verdana id="forsøk"> &#9825; Attempts:</h3>
-
+    
 
     <script>
-        var knapp = document.querySelector("#knappID");
+        var knapp = document.querySelector("#knappID")
         var input = document.querySelector("#inputID")
         var feedback = document.querySelector("#feedback")
+        var attempts = document.querySelector("#attempts")
+        var attempt_counter = 3
+        var correct = document.querySelector("#corrects")
 
         var random_num = Math.floor(Math.random() * 50) + 1;
  
@@ -62,15 +106,36 @@
             guessed_num = input.value;
 
             if (guessed_num == random_num){
-                feedback.innerHTML = "Congratulations, you guessed right!";
+                attempt_counter =+ 1
+                feedback.innerHTML = "Congratulations, you guessed right!, Get 10 right for a prize!"; return
             } else if (guessed_num < random_num) {
-                feedback.innerHTML = "The number you guessed was too low!"
+                attempt_counter =-1
+                feedback.innerHTML = "The number you guessed was too low!"; 
             } else if (guessed_num > random_num) {
-                feedback.innerHTML = "The number you guessed was too high!";
+                attempt_counter =-1
+                feedback.innerHTML = "The number you guessed was too high!"; 
             }
         }
- 
+
+        function sjekkForsøk(){
+            console.log(attempts.value)
+            attempt_counter = attempts.value;
+
+            if (attempt_counter == 0){
+                feedback.innerHTML = "Oops! You're out of guesses, try again!";
+            }
+            
+        }
+
+        function sjekkCorrect(){
+            if (correct == 10){
+                feedback.innerHTML = "You have gotten 10 correct guesses! Here is your prize:"
+            }
+        } 
+
         knapp.addEventListener("click", sjekkTall);
+
+        knapp.addEventListener("click", sjekkForsøk);
 
 
 
