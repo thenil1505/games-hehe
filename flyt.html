@@ -38,25 +38,35 @@
 <body>
     <div class="letter">
         <img src="closed enve.PNG" alt="" srcset="">
-        <h2> Nummer mellom 0-50!</h2>
+        <h2> A number between 0-50!</h2>
     </div>
 
     <div class ="guess_box">
-        <input type="text" placeholder="Ditt svar" id="inputID">
-        <button style=font-family:Verdana id="knappID"> Gjett! </button>
+        <input type="text" placeholder="Type number here" id="inputID">
+        <button style=font-family:Verdana id="knappID"> Guess! </button>
     </div>
 
-    <h3 style=font-family:verdana id="forsøk">Forsøk:</h3>
+    <h3 style=font-family:verdana id="forsøk">Attempts:</h3>
 
 
     <script>
         var knapp = document.querySelector("#knappID");
         var input = document.querySelector("#inputID")
+        var feedback = document.querySelector("#feedback")
 
-        let x = Math.random() * 50;
+        var random_num = Math.floor(Math.random() * 50) + 1;
  
         function sjekkTall(){
-        console.log(input.value)
+            console.log(input.value)
+            guessed_num = input.value;
+
+            if (guessed_num == random_num){
+                feedback.innerHTML = "Congratulations, you guessed right!";
+            } else if (guessed_num < random_num) {
+                feedback.innerHTML = "The number you guessed was too low!"
+            } else if (guessed_num > random_num) {
+                feedback.innerHTML = "The number you guessed was too high!";
+            }
         }
  
         knapp.addEventListener("click", sjekkTall);
