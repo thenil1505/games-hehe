@@ -38,6 +38,7 @@
 <body>
     <div class="letter">
         <img src="closed enve.PNG" alt="" srcset="">
+        <h2> Nummer mellom 0-50!</h2>
     </div>
 
     <div class ="guess_box">
@@ -51,12 +52,16 @@
     <script>
         var knapp = document.querySelector("#knappID");
         var input = document.querySelector("#inputID")
+
+        let x = Math.random() * 50;
  
         function sjekkTall(){
         console.log(input.value)
         }
  
         knapp.addEventListener("click", sjekkTall);
+
+
 
     </script>
 </body>
