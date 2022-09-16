@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess the number!</title>
+    <link rel="icon" href="icon heart.png">
 
 
     <style>
@@ -69,12 +70,14 @@
             margin: auto;
             margin-top: 10%;
         }
+
     </style>
 
 </head>
 
 <body>
     <h3 style=font-family:verdana id="attempts"> &#9825; Attempts:</h3>
+    <h3 style=font-family:verdana id="score"></h3>
 
     <div class = "innpakning">
     <div class="letter">
@@ -98,7 +101,7 @@
         var score_EL = document.querySelector("#score");
 
         var random_num = Math.floor(Math.random() * 50) + 1;
-        var attempts = 3;
+        var attempts = 5;
         var score = 0;
         var playing = false;
         var new_game = true;
@@ -106,7 +109,7 @@
         //Restart function
         function restart(){
             feedback_EL.innerHTML = "New round!";
-            attempts = 3;
+            attempts = 5;
             score = 0;
             random_num = Math.floor(Math.random() * 50) + 1;
             new_game = true;
