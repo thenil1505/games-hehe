@@ -91,33 +91,46 @@
     </div>
 
     <script>
-        var knapp_EL = document.querySelector("#knappID")
-        var input_EL = document.querySelector("#inputID")
-        var feedback_EL = document.querySelector("#feedback")
-        var restart_EL = document.querySelector("#restart")
+        var knapp_EL = document.querySelector("#knappID");
+        var input_EL = document.querySelector("#inputID");
+        var feedback_EL = document.querySelector("#feedback");
+        var restart_EL = document.querySelector("#restart");
+        var score_EL = document.querySelector("#score");
 
         var random_num = Math.floor(Math.random() * 50) + 1;
         var attempts = 3;
         var score = 0;
-        var playing = true;
+        var playing = false;
+        var new_game = true;
 
+        //Restart function
         function restart(){
             feedback_EL.innerHTML = "New round!";
             attempts = 3;
             score = 0;
             random_num = Math.floor(Math.random() * 50) + 1;
-            playing = true;
+            new_game = true;
+            playing = false;
+            console.log(new_game)
+            console.log(playing)
         }
-
+        //Checks your attempts
         function check_attempts(){
             if (attempts <= 0) {
-                feedback_EL.innerHTML = "You are out of attempts. Play again!";
+                feedback_EL.innerHTML = "You are out of attempts. The number was: "+ random_num +" Play again!";
+                new_game = true;
                 playing = false
             }
         }
         
+        //Checks your input and the random number
         function sjekkTall(){
-            if (playing == true){ 
+            if (new_game){
+                playing = true;
+                new_game = false;
+            }
+
+            if (playing){ 
                 console.log(input_EL.value)
                 guessed_num = input_EL.value;
                 attempts--;
@@ -125,6 +138,7 @@
                 if (guessed_num == random_num){
                     feedback_EL.innerHTML = "Congratulations, you guessed right!, Get 10 right for a prize!";
                     score++;
+                    score_EL.innerHTML = "Score: " + score;
                     playing = false;
                 } 
                 else if (guessed_num < random_num) {
@@ -135,9 +149,10 @@
                     feedback_EL.innerHTML = "The number you guessed was too high!"; 
                     check_attempts()
                 }
-            }
-        }
+            } //end if playing
+        } //end sjekktall function
 
+        //Gives you your prize when you get 10 correct guesses
         function prize(){
             if(score == 10) {
                 feedback_EL.innerHTML = "You have gotten 10 right! Here is your prize!"
@@ -146,7 +161,11 @@
 
     knapp_EL.addEventListener("click", sjekkTall);
     restart_EL.addEventListener("click", restart);
-
+    window.addEventListener('keyup', function(event) {
+        if (event.key == 'Enter') {
+            sjekkTall()
+        }
+    })
 
     </script>
 </body>
